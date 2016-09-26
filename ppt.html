@@ -38,15 +38,15 @@
 * Free Monad.
 * Interpreter.
 
-Program will be described by a sequence of building blocks.
+Program will be described as a sequence of building blocks.
 
-Such programs can be passed to an interpreter in order to be executed.
+Program can be passed to an interpreter in order to be executed.
 
 ---
 
 # Building blocks
 ###Let's build small language which allows us to express our programs.
-* It should represent basic building blocks of our application.
+* It should represents basic building blocks of our application.
 * We will use them to represent sequence of instructions/operations.
 * Instructions vs program execution.
 * No side effects.
@@ -115,7 +115,7 @@ val r: Lang[Unit] = for {
 ## Good to know:
 * Bind -> constructor
 * Let's skip monad laws for now.
-* Monads will represent sequence of context aware operations.
+* Monad will represents a sequence of context aware operations.
 * Hype HINT: read about property based testing*
 * [Brian Beckman: Don't fear the Monad](https://www.youtube.com/watch?v=ZhuHCtR3xq8)
 
@@ -273,7 +273,7 @@ def quiz: Free[Lang, Unit] = for { //More will use
 
 # Interpreter
 * Single point with core logic which can grow fast and become super complex.
-* I is responsible also for error handling.
+* Interpreter is also responsible for an error handling.
 * No space for quick solutions!!!
 
 
