@@ -347,7 +347,7 @@ class Free[F[_], A](implicit F: Functor[F]) {
   }
   def map[B](f: A => B): Free[F, B] = flatMap { x => Done(f(x)) }
 }
-//ADT
+//DSL
 sealed trait Lang[Next] // See F[_] in functor...
 //Composition
 def quiz: Free[Lang, Unit] = for { //More will use
@@ -394,10 +394,10 @@ def run[T](program: Free[Lang, T]): T = program match {
 ---
 
 # Free Monads: Recap
-* ADT as the building blocks.
-* With functor which allows us to lift our ADT into monad (map, flatMap).
+* DSL as the building blocks.
+* With functor which allows us to lift our DSL into monad (map, flatMap).
 * Composition which describes our program (sequence of our building blocks).
-* Interpreters which pattern match over our ADT and make things happen.
+* Interpreters which pattern match over our DSL and make things happen.
 * SimpleMain.scala
 
 ---

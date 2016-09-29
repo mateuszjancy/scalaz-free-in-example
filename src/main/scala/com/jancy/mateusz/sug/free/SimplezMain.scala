@@ -46,14 +46,15 @@ object SimplezMain extends App {
   //Interpreter
   def run[T](program: Free[Lang, T]): Either[Throwable, T] = program.resume.fold({
     case RandomNumber(next) =>
+      run(next(Random.nextInt(10)))
+    case Guess(next) =>
+      println("Try to guess random number (from 0 to 10):")
       try {
-        run(next(Random.nextInt(10)))
+        run(next(StdIn.readInt()))
       } catch {
         case NonFatal(ex) => run(Free.liftF(Fail(ex)))
       }
-    case Guess(next) =>
-      println("Try to guess random number (from 0 to 10):")
-      run(next(StdIn.readInt()))
+
     case Answer(n, q, next) =>
       println(if (n == q) "Correct!!" else s"Wrong!!! Correct answer was: $n")
       run(next)
